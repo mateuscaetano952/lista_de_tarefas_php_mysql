@@ -18,6 +18,17 @@
         <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         <h2 class="d-inline-block">App lista de tarefas</h2>
         </header>
+        <?php if($_GET["sucesso"] == 1){  ?>
+            <div class="alert alert-success" role="alert">
+                Tarefa salva com sucesso.
+            </div>
+ 
+        <?php } ?>
+
+
+
+
+       
 
         <div class="row content mt-5">
             <aside class="col-md">

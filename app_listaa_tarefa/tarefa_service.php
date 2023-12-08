@@ -15,6 +15,7 @@ class Tarefa_service{
         $stmt = $this->conexao->prepare($query);
         $stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'));
         $stmt->execute();
+        header('Location:http://localhost/nova_tarefa.php?sucesso=1');
     }
 
     public function recuperar(){
