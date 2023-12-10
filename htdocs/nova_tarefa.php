@@ -47,7 +47,7 @@
             <section class="col-md-9">
                 <div class="mt-5">
                     <h2 class="text-success font-weight-bold mb-5">Novas tarefas</h2>
-                    <form method="post" action="tarefa_controler.php">
+                    <form method="post" action="tarefa_controler.php?acao=inserir">
                         <div class="form-group">
                                 <label for="input">Descrição da tarefa:</label>
                                 <input name="tarefa" type="text" class="form-control" id="input" placeholder="Exemplo: Ir ao mercado">

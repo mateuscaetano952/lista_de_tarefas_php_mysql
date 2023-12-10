@@ -1,3 +1,10 @@
+<?php 
+$acao = 'recuperar';
+$tarefas = $lista;
+require('./tarefa_controler.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,22 +44,20 @@
                 <div class="mt-5">
                     <h2 class="text-success font-weight-bold mb-5">Tarefas pendentes</h2>
                     <ul class="list-group">
+                    
+                    <?php foreach ($lista as $indice => $tarefa) {?>
+
+
                     <li class="list-group-item p-3 d-flex">
-                        <a class="linkPersonalizado col col-md-9" href="index.php">Exemplo de tarefa 1</a>
+                        <a class="linkPersonalizado col col-md-9" href="index.php"><?php echo  $tarefa['tarefa']; ?></a>
                         <div class="col d-flex">
                             <a href=""><i class="fa fa-trash fa-2x text-danger col col-md-4" aria-hidden="true"></i></a>
                             <a href=""><i class="fa fa-pencil-square-o fa-2x text-primary col-md-4" aria-hidden="true"></i></a>
                             <a href=""><i class="fa fa-check-square fa-2x text-success col-md-4" aria-hidden="true"></i></a>
                         </div>
                     </li>
-                    <li class="list-group-item p-3 d-flex">
-                        <a class="linkPersonalizado col col-md-9" href="index.php">Exemplo de tarefa 2</a>
-                        <div class="col d-flex">
-                            <a href=""><i class="fa fa-trash fa-2x text-danger col col-md-4" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-pencil-square-o fa-2x text-primary col-md-4" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-check-square fa-2x text-success col-md-4" aria-hidden="true"></i></a>
-                        </div>
-                    </li>
+
+                    <?php } ?>
                     
                 </ul>
                     
