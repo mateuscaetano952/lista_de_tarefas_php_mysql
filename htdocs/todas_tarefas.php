@@ -17,6 +17,32 @@ require('./tarefa_controler.php');
     <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--Meu estilo-->
     <link rel="stylesheet" href="/style/style.css">
+    <script>
+        function editar(id, tarefaTexto){
+            let tarefa = document.getElementById('tarefa_' + id);
+            
+            //Criar formulario
+            let form = document.createElement('form');
+            form.classList = "d-flex row";
+
+            //Criar butão
+            let button = document.createElement('button');
+            button.classList = "btn btn-success col-md-3";
+            button.innerHTML = "Atualizar";
+
+            //Adicioar input e button ao form
+            let input = document.createElement('input');
+            input.classList = "form-control col-md-9";
+            input.value = tarefaTexto;
+
+            form.appendChild(input);
+            form.appendChild(button);
+
+            tarefa.innerHTML = "";
+            tarefa.appendChild(form);
+            
+        }
+    </script>
 </head>
 <body>
     
@@ -45,15 +71,16 @@ require('./tarefa_controler.php');
                     <h2 class="text-success font-weight-bold mb-5">Tarefas pendentes</h2>
                     <ul class="list-group">
                     
-                    <?php foreach ($lista as $indice => $tarefa) {?>
+                    <?php foreach ($lista as $indice => $tarefa) { ?>
 
 
                     <li class="list-group-item p-3 d-flex">
-                        <a class="linkPersonalizado col col-md-9" href="index.php"><?php echo  $tarefa['tarefa']; ?></a>
+                        <a id="tarefa_<?php echo  $tarefa['id']; ?>" class="linkPersonalizado col col-md-9"><?php echo  $tarefa['tarefa']; ?></a>
                         <div class="col d-flex">
-                            <a href=""><i class="fa fa-trash fa-2x text-danger col col-md-4" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-pencil-square-o fa-2x text-primary col-md-4" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-check-square fa-2x text-success col-md-4" aria-hidden="true"></i></a>
+                            <a><i class="fa fa-trash fa-2x text-danger col col-md-4" aria-hidden="true"></i></a>
+                            <a  onclick="editar(<?php echo  $tarefa['id']; ?>, '<?php echo $tarefa['tarefa']; ?>')"><i class="fa fa-pencil-square-o fa-2x text-primary col-md-4" aria-hidden="true"></i></a>
+                            
+                            <a><i class="fa fa-check-square fa-2x text-success col-md-4" aria-hidden="true"></i></a>
                         </div>
                     </li>
 
