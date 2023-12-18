@@ -20,23 +20,33 @@ require('./tarefa_controler.php');
     <script>
         function editar(id, tarefaTexto){
             let tarefa = document.getElementById('tarefa_' + id);
-            
+            console.log(id)
             //Criar formulario
             let form = document.createElement('form');
             form.classList = "d-flex row";
+            form.method = "POST";
+            form.action = "./tarefa_controler.php?acao=atualizar"
 
             //Criar butão
             let button = document.createElement('button');
             button.classList = "btn btn-success col-md-3";
             button.innerHTML = "Atualizar";
 
-            //Adicioar input e button ao form
+            //hidden input
+            let InputId = document.createElement('input');
+            InputId.type = "hidden";
+            InputId.value = id;
+            InputId.name = "idInput"
+
+            //Adicionar input e button ao form
             let input = document.createElement('input');
             input.classList = "form-control col-md-9";
             input.value = tarefaTexto;
+            input.name = "tarefaNova";
 
             form.appendChild(input);
             form.appendChild(button);
+            form.appendChild(InputId);
 
             tarefa.innerHTML = "";
             tarefa.appendChild(form);
@@ -45,6 +55,18 @@ require('./tarefa_controler.php');
     </script>
 </head>
 <body>
+<div class="container">
+        <header class="mt-4">
+        <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <h2 class="d-inline-block">App lista de tarefas</h2>
+        </header>
+        <?php if($_GET["sucesso"] == 1){  ?>
+            <div class="alert alert-success" role="alert">
+                Operacao feito com sucesso
+            </div>
+ 
+        <?php } ?>
+
     
     <div class="container">
         <header class="mt-4">

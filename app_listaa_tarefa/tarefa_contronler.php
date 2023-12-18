@@ -27,6 +27,19 @@
         $lista = $tarefa_service->recuperar();
 
     }
+
+    else if($acao == 'atualizar'){
+        $tarefa = new Tarefa();
+        $tarefa->__set('tarefa', $_POST['tarefaNova']);
+        $tarefa->__set('id', $_POST['idInput']);
+        
+        $conexao = new Conexao();
+
+        $tarefa_service = new Tarefa_service($tarefa, $conexao);
+        $tarefa_service->atualizar();
+
+
+    }
     
     
     

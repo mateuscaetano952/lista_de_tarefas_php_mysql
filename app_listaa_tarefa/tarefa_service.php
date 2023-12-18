@@ -42,8 +42,25 @@ class Tarefa_service{
         return $lista;
     }
 
-    public function modifica(){
+    public function atualizar(){
+            $query = "
+            UPDATE tb_tarefas
+            SET tarefa = :tarefa 
+            WHERE id = :id
+        "; 
+
+        try{
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'),);
+            $stmt->bindValue(':id', $this->tarefa->__get('id'),);
+            $stmt->execute();
         
+            }catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        
+            header('Location:http://localhost/todas_tarefas.php?sucesso=1');
+
     }
 
     public function excluir(){
