@@ -52,6 +52,10 @@ require('./tarefa_controler.php');
             tarefa.appendChild(form);
             
         }
+
+        function deletar(id){
+            location.href = 'todas_tarefas.php?acao=deletar&id=' + id;
+        }
     </script>
 </head>
 <body>
@@ -99,10 +103,18 @@ require('./tarefa_controler.php');
                     <li class="list-group-item p-3 d-flex">
                         <a id="tarefa_<?php echo  $tarefa['id']; ?>" class="linkPersonalizado col col-md-9"><?php echo  $tarefa['tarefa']; ?></a>
                         <div class="col d-flex">
-                            <a><i class="fa fa-trash fa-2x text-danger col col-md-4" aria-hidden="true"></i></a>
-                            <a  onclick="editar(<?php echo  $tarefa['id']; ?>, '<?php echo $tarefa['tarefa']; ?>')"><i class="fa fa-pencil-square-o fa-2x text-primary col-md-4" aria-hidden="true"></i></a>
+                        
+                        <!--Deletar-->
+                        <a onclick="deletar(<?php echo $tarefa['id']; ?>)">
+                            <i class="fa fa-trash fa-2x text-danger col col-md-4" aria-hidden="true"></i>
+                        </a>
                             
-                            <a><i class="fa fa-check-square fa-2x text-success col-md-4" aria-hidden="true"></i></a>
+                        <!--Editar-->
+                        <a  onclick="editar(<?php echo  $tarefa['id']; ?>, '<?php echo $tarefa['tarefa']; ?>')">
+                            <i class="fa fa-pencil-square-o fa-2x text-primary col-md-4" aria-hidden="true"></i>
+                        </a>
+                            
+                        <a><i class="fa fa-check-square fa-2x text-success col-md-4" aria-hidden="true"></i></a>
                         </div>
                     </li>
 

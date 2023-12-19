@@ -40,6 +40,18 @@
 
 
     }
+
+    else if($acao == 'deletar'){
+        $tarefa = new Tarefa();
+        $tarefa->__set('id', $_GET['id']);
+
+        $conexao = new Conexao();
+
+        $tarefa_service = new Tarefa_service($tarefa, $conexao);
+        $tarefa_service->deletar($_GET['id']);
+        
+
+    }
     
     
     

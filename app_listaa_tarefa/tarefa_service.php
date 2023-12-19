@@ -63,7 +63,20 @@ class Tarefa_service{
 
     }
 
-    public function excluir(){
+    public function deletar($id){
+        echo "chueguei";
+        $query = 'DELETE from tb_tarefas WHERE id = :id';
+
+        try{
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':id', $id); 
+            $stmt->execute();
+        }catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+
+        header('Location:http://localhost/todas_tarefas.php?sucesso=1');
         
     }
 }
